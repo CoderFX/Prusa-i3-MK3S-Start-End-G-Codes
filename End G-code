@@ -1,0 +1,11 @@
+G4 ; wait
+M221 S100 ; Set Flow Percentage
+M104 S0 ; turn off temperature
+M140 S0 ; turn off heatbed
+M107 ; turn off fan
+G1 F1000.0 ; set feed rate
+G1 E-3 ; retract
+{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+30, max_print_height)}{endif} ; Move print head up
+G1 X20 Y200 ; home X axis
+
+M84 ; disable motors
